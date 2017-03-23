@@ -1,0 +1,114 @@
+Plasma Sword 2015 Part List
+
+Adafruit
+https://www.adafruit.com/products/2010		Adafruit Pro Trinket - 3V 12MHz
+https://www.adafruit.com/products/2210		Adafruit Audio FX Sound Board 2x2W Amp - WAV/OGG Trigger - 2MB and
+https://www.adafruit.com/products/1890		Mini Metal Speaker w/ Wires - 8 ohm 0.5W
+https://www.adafruit.com/products/1138		2x - Adafruit NeoPixel Digital RGB LED Strip - White 60 LED - 1m - WHITE
+https://www.adafruit.com/products/2124		Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On
+https://www.adafruit.com/products/328		Lithium Ion Polymer Battery - 3.7v 2500mAh
+https://www.adafruit.com/products/1466		5V 4A (4000mA) switching power supply - UL Listed
+https://www.adafruit.com/products/1231		ADXL345 - Triple-Axis Accelerometer (+-2g/4g/8g/16g) w/ I2C/SPI
+https://www.adafruit.com/products/1589		4700uF 10v Electrolytic Capacitor
+
+Sparkfun
+https://www.sparkfun.com/products/10443	LED Tactile Button - Blue
+https://www.sparkfun.com/products/102		SPDT Mini Power Switch
+https://www.sparkfun.com/products/8734		Barrel Jack to 2-pin JST
+https://www.sparkfun.com/products/8639		Barrel Jack Adapter - USB to 5.5mm
+
+
+Plasma Sword 2015 Assembly
+
+- Wire power to various circuits
+- - 4A 5V connects to the trinket in parrallel with the USB voltage input (unregulated).
+- - - Battery snaps into the trinket lipo charger backback
+- - - - NeoPixel lights are powered directly by the battery in parallel with the
+        large capacitor.
+- - - - Sound FX is powered directly by the battery
+- - - - Trinket is powered by the lipo charger backback / battery
+- - - - - Accelerometer wires into the 3.3 volt regulated output from the
+          arduino trinket
+
+- Prepare your arduino ide with the needed libraries.  Use tutorials from
+  adafruit.com for help.
+- - Adafruit_Soundboard.h
+- - Adafruit_NeoPixel.h
+- - Adafruit_Sensor.h
+- - Adafruit_ADXL345_U.h
+
+- Compile the source code in arduino ide
+
+- Use a usb or FTDI cable to program the trinket
+
+- With the power disconnected, wire the LED to ground and Pin 9. Add a
+  resister between the LED and the trinket pin 9.
+- - LED -> Trinket Pin 9
+- - SW  -> Trinket Pin 4
+
+          LED GROUND
+          _|_
+    DNC -|   |- Switch
+         | O |
+    DNC -|___|- SW GROUND
+           |
+          LED+
+
+Notes: DNC = Do not connect
+       The switch is not well marked.  You may have to reverse the LED wiring.
+
+- Power up the trinket and make sure that the LED lights up.  Press the button,
+  the LED should turn off.
+
+- Power down the circuit and disconnect power.
+
+- Plug the sound effect circuit into your pc by usb cable.  Drag and drop the
+  sound files in the following order one at a time.  DO NOT COPY ALL AT ONCE.
+  The order copied establishes file numbers used by the sword software.
+
+  0  POWERON
+  1  HUM
+  2  POWEROFF
+  3  SWING2
+  4  SWING3
+  5  SWING4
+  6  SWING5
+  7  SWING6
+  8  SWING7
+  9  SWING8
+  10 SWING1
+  11 CLASH1
+  12 CLASH2
+  13 CLASH3
+  14 CLASH4
+  15 CLASH5
+  16 CLASH6
+  17 CLASH7
+  18 CLASH8
+  19 BOOT
+
+Troubleshooting: If the order is not followed, you will have to edit the
+  software's soundmap arrays to reflect the correct order.
+
+- With the power disconnected, wire up the Sound Effects circuit
+- - TX  -> Trinket Pin 3
+- - RX  -> Trinket Pin 5
+- - RST -> Trinket Pin 8 (optional)
+
+- Power up the circuits and press the button, you should hear the sound effects.
+
+- Power down the circuit and disconnect power.
+
+- With the power disconnected, wire up the Neopixel lights.
+- - NEOPIXEL -> Trinket Pin 6
+
+- Power up the circuit and press the button, you should see ALL the lights light up.
+
+- Power down the circuit and disconnect power.
+
+- With the power disconnected, wire up the accelerometer.
+- - I2C SDA -> Trinket Pin A4
+- - I2C SCL -> Trinket Pin A5
+
+- Power up the circuit and press the button, tap the accelerometer with your
+  finger.  You should hear a sound effect.
