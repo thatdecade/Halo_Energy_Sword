@@ -2,6 +2,9 @@
 
 This arduino code is used to animate a single or double bladed light sword.  Libraries and modules were used from Adafruit, read source comments for specific usage.
 
+Blog Post: 
+https://www.westaby.net/2015/05/energy-sword-2015/
+
 Demo Videos:     
 https://www.youtube.com/watch?v=zmJRItGdaBc                 
 https://www.youtube.com/watch?v=1c_vYc95HNg
